@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+    <style>
+         body {
+      
+ 			content: "";
+            background-image: url('https://i.pinimg.com/originals/5a/9a/97/5a9a973d0f13660d26383e9b2ccb77f9.gif');
+        background-size: 120%;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+    }
+
+    .profile-container {
+        background-color: #181818;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+    
+    .caf{
+        padding-top: 30px;
+            width: 70%;
+            margin: 0 auto;
+         }
+    
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="profile-container d-flex align-items-center mb-4">
+        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic rounded-circle mr-3">
+        <p class="mb-0 text-light"><span th:text="${nombreUsuario}"></span></p>
+        <a href="/logout" class="btn btn-danger ml-auto">Cerrar sesión</a>
+    </div>
+
+
+
+
+<div class="caf">
+<div class="card text-bg-light mb-3">
+  <div class="card-header">Detalles del Producto</div>
+  <div class="card-body">
+    
+    
+    <p class="card-text">ID: <span th:text="${producto.idPro}"></span></p>
+            <p class="card-text">Nombre: <span th:text="${producto.nomPro}"></span></p>
+            <p class="card-text">Precio: <span th:text="${producto.precio}"></span></p>
+            <p class="card-text">Stock: <span th:text="${producto.stock}"></span></p>
+            <p class="card-text">Categoría: <span th:text="${producto.categoria.nomCat}"></span></p>
+  </div>
+</div>
+</div>
+
+<br>
+		<a th:href="@{/productos}" class="btn btn-dark">Regresar</a>
+		<a th:href="@{@{/eliminar/{id}(id=${producto.idPro})}}"
+		onclick="return confirm('¿Estás seguro de eliminar este producto?')"
+		class="btn btn-danger">
+		Eliminar
+		</a>
+
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

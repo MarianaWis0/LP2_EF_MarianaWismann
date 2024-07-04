@@ -54,8 +54,8 @@
         <a href="/logout" class="btn btn-danger ml-auto">Cerrar sesión</a>
     </div>
 
-<a th:href="@{/registrarProducto}" class="btn btn-dark">Agregar Producto</a>
-
+<a th:href="@{/nuevo_producto}" class="btn btn-dark">Agregar Producto</a>
+ <a th:href="@{/generar_pdf_productos}" class="btn btn-dark">Exportar PDF</a>
 
 <div class="table-container">
 
@@ -82,9 +82,10 @@
                    <td th:text=" ${producto.stock}"></td>
                    <td th:text=" ${producto.categoria.nomCat}"></td>
                    <td>
-                        <a th:href="@{'/ver/' + ${producto.idPro}}" class="text-primary">Detalles </a>
+                       <a th:href="@{/detalle/{id}(id=${producto.idPro})}" class="text-primary">Detalles</a>
+
                          || 
-                        <a th:href="@{'/editar/' + ${producto.idPro}}"class="text-success"> Editar</a>
+                        <a th:href="@{/editar_producto/{id}(id=${producto.idPro})}"class="text-success"> Editar</a>
                     </td>
                 </tr>
             </tbody>
