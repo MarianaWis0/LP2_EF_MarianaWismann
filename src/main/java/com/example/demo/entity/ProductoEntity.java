@@ -31,10 +31,13 @@ public class ProductoEntity {
 	@Column(name = "id_producto")
 	private Integer idPro;
 	
+	@Column(name = "nomPro", nullable = false, length = 100)
 	private String nomPro;
 	
+	@Column(name = "precio", nullable = false, precision = 10, scale = 2)
 	private Double precio;
 	
+	@Column(name = "stock", nullable = false)
 	private Integer stock;
 	
 	

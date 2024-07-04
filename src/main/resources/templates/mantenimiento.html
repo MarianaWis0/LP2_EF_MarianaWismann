@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+   <style>
+    body {
+        background-image: url('https://i.pinimg.com/originals/5a/9a/97/5a9a973d0f13660d26383e9b2ccb77f9.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .profile-container {
+        background-color: #181818;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+    
+   
+
+    .table th {
+        background-color: #181818;
+        color: #f6f6f6;
+        border-top: none; 
+    }
+
+  
+    
+      .table-container {
+           padding-top: 30px;
+            width: 80%;
+            margin: 0 auto;
+         
+        }
+
+   
+</style>
 </head>
 <body>
+<div class="container mt-4">
+    <div class="profile-container d-flex align-items-center mb-4">
+        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic rounded-circle mr-3">
+        <p class="mb-0 text-light"><span th:text="${nombreUsuario}"></span></p>
+        <a href="/logout" class="btn btn-danger ml-auto">Cerrar sesión</a>
+    </div>
 
+<a th:href="@{/registrarProducto}" class="btn btn-dark">Agregar Producto</a>
+
+
+<div class="table-container">
+
+
+    <table class="table table-light table-striped" >
+    
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto : ${productos}">
+                   <td th:text=" ${producto.idPro}"></td>
+                   <td th:text=" ${producto.nomPro}"></td>
+                   <td>
+    S/ <span th:text="${producto.precio}"></span>
+</td>
+                   <td th:text=" ${producto.stock}"></td>
+                   <td th:text=" ${producto.categoria.nomCat}"></td>
+                   <td>
+                        <a th:href="@{'/ver/' + ${producto.idPro}}" class="text-primary">Detalles </a>
+                         || 
+                        <a th:href="@{'/editar/' + ${producto.idPro}}"class="text-success"> Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-Cc0G8j6vvEj4IdvX4h+4eOVbOeKehFuYKLidGznx7VUhDg+I0T/nyPuhUqcGx2yT"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+IhFfjkK4Y8tcRfdjONwmq4hYBtJ3UqJG3C"
+        crossorigin="anonymous"></script>
 </body>
 </html>

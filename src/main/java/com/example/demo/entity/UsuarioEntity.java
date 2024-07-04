@@ -36,8 +36,23 @@ public class UsuarioEntity {
 	)
 	private String correo;
 	
+	@Column(name = "password" ,
+			nullable = false 
+			)
 	private String password;
+	
+	@Column(name = "nombre" ,
+			nullable = false ,
+			length = 100,
+			columnDefinition = "VARCHAR(100)"
+			)
 	private String nombre;
+	
+	@Column(name = "apellido" ,
+			nullable = false ,
+			length = 100,
+			columnDefinition = "VARCHAR(100)"
+			)
 	private String apellido;
 	
 	  @Column(name = "fecha_nacimiento", nullable = false, updatable = false)
