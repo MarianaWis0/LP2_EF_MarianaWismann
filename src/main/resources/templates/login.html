@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+ body {
+    background-image: url('https://i.pinimg.com/originals/af/07/ed/af07ed777318ec7c474804dbf7afdffb.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  .card {
+    width: 400px; 
+
+  }
+  
+ 
+</style>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+<div class="card shadow-sm p-4">
+  <div th:if="${loginInvalido}" class="alert alert-danger" role="alert">
+    <span th:text="${loginInvalido}"></span>
+  </div>
+  <h2 class="card-title text-center mb-4">Inicio de Sesión</h2>
+  <form th:action="@{/login}" method="post" th:object="${usuario}">
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input th:field="*{correo}" type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input th:field="*{password}" type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+    <br>
+    <a href="/registrar">Registrar Usuario</a>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
