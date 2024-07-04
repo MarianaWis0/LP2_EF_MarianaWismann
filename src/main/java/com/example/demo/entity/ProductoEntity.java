@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ public class ProductoEntity {
 	private String nomPro;
 	
 	@Column(name = "precio", nullable = false, precision = 10, scale = 2)
-	private Double precio;
+	private BigDecimal  precio;
 	
 	@Column(name = "stock", nullable = false)
 	private Integer stock;
